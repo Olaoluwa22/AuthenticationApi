@@ -1,6 +1,5 @@
 package com.ecommerce.backendAtHiit.controller;
 
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,12 +9,12 @@ public class BackendController {
     public String homepage(){
       return "Welcome to Spring";
     }
-    @PostMapping("/post")
-    public void recieveDate(){
-    
+    @RequestMapping("/loginpage")
+    public String loginPage(){
+    return "Follow this link to login to your profile";
     }
     @RequestMapping("/loginpage/auth")
     public String authenticate(){
-        return "Follow this link: https://validateuser.auth.io";
+        return "Follow this link: https://authenticateUser.auth.io";
     }
 }
