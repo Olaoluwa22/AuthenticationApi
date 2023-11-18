@@ -1,6 +1,9 @@
 package com.ecommerce.backendAtHiit.controller;
 
 import com.ecommerce.backendAtHiit.Course;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -42,10 +45,49 @@ public class BackendController {
         int i = courseId -1;
         return availableCourses.get(i);
     }
+    @GetMapping("/coursecode/{id}")
+    public String getCourseCode(@PathVariable(name = "id") Integer courseId){
+        int i = courseId -1;
+        return availableCourses.get(i).getCourseCode();
+    }
     @GetMapping("/courses/{id}/content")
     public List<String> getCourseContent(@PathVariable(name = "id") Integer courseId){
         int i = courseId-1;
         return availableCourses.get(i).getContent();
+    }
+    @GetMapping("/course/search")
+    public ResponseEntity<?> getCourseByParam(@RequestParam(name = "title") String title){
+        ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.PROCESSING);
+        Course data = null;
+        for (Course course: availableCourses) {
+            if (course.getCourseTitle().equalsIgnoreCase(title)) {
+                data = course;
+                break;
+            }
+        }
+            if (data == null){
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
+            responseEntity = new ResponseEntity<>(data,HttpStatus.OK);
+
+        return responseEntity;
+    }
+    @GetMapping("/course")
+    public ResponseEntity<?> getCourseByParams(@RequestParam(name = "title") String title, @RequestParam(name = "code") String code){
+        ResponseEntity<Object> responseEntity = new ResponseEntity<>(HttpStatus.PROCESSING);
+        Course data = null;
+        for (Course course: availableCourses) {
+            if (course.getCourseTitle().equalsIgnoreCase(title) || course.getCourseCode().equalsIgnoreCase(code) ){
+                data = course;
+                break;
+            }
+        }
+        if (data == null){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        responseEntity = new ResponseEntity<>(data,HttpStatus.OK);
+
+        return responseEntity;
     }
     @GetMapping("/courses/{id}/content/{contentId}")
     public String getCourseContentById(@PathVariable(name = "id") Integer courseId, @PathVariable Integer contentId){
