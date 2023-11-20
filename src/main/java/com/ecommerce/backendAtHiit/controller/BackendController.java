@@ -1,6 +1,7 @@
 package com.ecommerce.backendAtHiit.controller;
 
 import com.ecommerce.backendAtHiit.Course;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
@@ -94,5 +95,10 @@ public class BackendController {
         int i = courseId-1;
         int j = contentId-1;
         return availableCourses.get(i).getContent().get(j);
+    }
+    @PostMapping("/course/create")
+    public ResponseEntity<?> createCourse(@Valid @RequestBody Course course){
+        availableCourses.add(course);
+        return null;
     }
 }
