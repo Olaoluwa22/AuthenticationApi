@@ -1,9 +1,8 @@
 package com.ecommerce.backendAtHiit.controller;
 
-import com.ecommerce.backendAtHiit.Course;
+import com.ecommerce.backendAtHiit.dto.Course;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
