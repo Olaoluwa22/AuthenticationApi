@@ -1,27 +1,34 @@
-package com.ecommerce.backendAtHiit.dto;
+package com.ecommerce.backendAtHiit.model;
 
-import jakarta.validation.constraints.*;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.Date;
 
-public class ProductDto {
-    @NotBlank
+@Entity
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     private String name;
-    @Size(min =5, max=50)
     private String description;
     private BigDecimal price;
     private String imageUrl;
-    @PastOrPresent
-    @NotNull
-    private Date createdAt;
-    @FutureOrPresent
-    @NotNull
-    private Date updatedAt;
-    @NotNull
+    private Instant createdAt;
+    private Instant updatedAt;
     private boolean active;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -55,19 +62,19 @@ public class ProductDto {
         this.imageUrl = imageUrl;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt.toInstant();
+    public Instant getCreatedAt(Date createdAt) {
+        return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
     public Instant getUpdatedAt() {
-        return updatedAt.toInstant();
+        return updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 
@@ -81,8 +88,9 @@ public class ProductDto {
 
     @Override
     public String toString() {
-        return "ProductDto{" +
-                "name='" + name + '\'' +
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
                 ", imageUrk='" + imageUrl + '\'' +
