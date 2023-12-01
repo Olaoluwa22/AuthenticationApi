@@ -36,6 +36,7 @@ public class ProductController {
         List<Product> allProduct = productRepository.findAll();
         return new ResponseEntity<>(allProduct, HttpStatus.FOUND);
     }
+
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> deleteProduct(@PathVariable(name ="id") Long productId){
         productRepository.deleteById(productId);

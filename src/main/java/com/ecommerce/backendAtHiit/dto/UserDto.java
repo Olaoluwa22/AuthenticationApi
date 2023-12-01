@@ -1,56 +1,47 @@
 package com.ecommerce.backendAtHiit.dto;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-
 import java.time.Instant;
 
 public class UserDto {
-    @NotBlank
-    private String firstName;
-    @NotBlank
-    private String lastName;
-    @NotBlank
-    private String otherName;
-    @NotBlank
-    private String password;
-    @NotBlank
+    private String firstname;
+    private String lastname;
+    private String othername;
     private String email;
-    private Instant createdAt;
+    private  boolean active;
     private Instant updatedAt;
-    @NotNull
-    private boolean active;
+    private Instant createdAt;
+    private Long id;
 
-    public String getFirstName() {
-        return firstName;
+    public Long getId() {
+        return id;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getOtherName() {
-        return otherName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setOtherName(String otherName) {
-        this.otherName = otherName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public String getPassword() {
-        return password;
+    public String getOthername() {
+        return othername;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public void setOthername(String othername) {
+        this.othername = othername;
     }
 
     public String getEmail() {
@@ -61,12 +52,12 @@ public class UserDto {
         this.email = email;
     }
 
-    public Instant getCreatedAt() {
-        return createdAt;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setCreatedAt(Instant createdAt) {
-        this.createdAt = createdAt;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Instant getUpdatedAt() {
@@ -77,24 +68,24 @@ public class UserDto {
         this.updatedAt = updatedAt;
     }
 
-    public boolean isActive() {
-        return active;
+    public Instant getCreatedAt() {
+        return createdAt;
     }
 
-    public void setActive(boolean active) {
-        this.active = active;
+    public void setCreatedAt(Instant createdAt) {
+        this.createdAt = createdAt;
     }
 
     @Override
     public String toString() {
-        return "UserDto{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", password='" + password + '\'' +
+        return "UserResponseDto{" +
+                "firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", othername='" + othername + '\'' +
                 ", email='" + email + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
                 ", active=" + active +
+                ", updatedAt=" + updatedAt +
+                ", id=" + id +
                 '}';
     }
 }

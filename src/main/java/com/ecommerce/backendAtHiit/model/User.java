@@ -12,16 +12,13 @@ public class User{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @NotBlank
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     private String firstname;
-    @NotBlank
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     private String lastname;
-    @NotBlank
-    @Column(length = 50)
+    @Column(length = 50, nullable = false)
     private String otherName;
-    @NotBlank
+    @Column(nullable = false)
     @Pattern(regexp="[a-zA-Z0-9]{8,}")
     private String password;
     @Column(unique = true, length = 100)
@@ -30,6 +27,7 @@ public class User{
     private Instant createdAt;
     private Instant updatedAt;
     private boolean active;
+    private boolean deleted;
 
     public Long getId() {
         return id;
@@ -101,6 +99,14 @@ public class User{
 
     public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public boolean isDeleted() {
+        return deleted;
+    }
+
+    public void setDeleted(boolean deleted) {
+        this.deleted = deleted;
     }
 
     @Override
