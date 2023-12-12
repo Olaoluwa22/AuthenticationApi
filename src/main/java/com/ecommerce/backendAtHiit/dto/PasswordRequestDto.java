@@ -1,16 +1,17 @@
 package com.ecommerce.backendAtHiit.dto;
 
 public class PasswordRequestDto {
-    private String firstname;
+    private String email;
     private String oldPassword;
     private String newPassword;
+    private String confirmNewPassword;
 
-    public String getFirstname() {
-        return firstname;
+    public String getEmail() {
+        return email;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setEmail(String firstname) {
+        this.email = email;
     }
 
     public String getOldPassword() {
@@ -29,12 +30,21 @@ public class PasswordRequestDto {
         this.newPassword = newPassword;
     }
 
+    public String getConfirmNewPassword() {
+        return confirmNewPassword;
+    }
+
+    public void setConfirmNewPassword(String confirmNewPassword) {
+        this.confirmNewPassword = confirmNewPassword;
+    }
+
     @Override
     public String toString() {
-        return "PsswordResetDto{" +
-                "firstname='" + firstname + '\'' +
+        return "PasswordResetDto{" +
+                "email='" + email + '\'' +
                 ", oldPassword='" + oldPassword + '\'' +
                 ", newPassword='" + newPassword + '\'' +
+                ", confirmNewPassword='"+ confirmNewPassword+
                 '}';
     }
 }
